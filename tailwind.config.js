@@ -13,6 +13,7 @@ module.exports = {
       'light-cream': "#FAF7F3",
       'white': "#FFFFFF",
       'black': "#000000",
+      'dark-gray': "#222831"
     },
 
     container: {

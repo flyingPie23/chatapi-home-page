@@ -3,13 +3,30 @@
 function Login() {
   const FormControl = (props) =>{
     return (
-      <div id={props.form}>
-        <label className="text-2xl font-header font-semibold" for={props.form}> {props.form} </label>
-        <br className="mb-8"/>
-        <input className="my-4 p-2 w-[100%] border border-red rounded-md bg-white" type={props.form} placeholder={`Enter ${props.form}`} name={props.form} required></input>
+
+      <div className="py-10 mx-auto">
+        <div>
+          <label className="text-2xl font-header font-semibold" for="username"> Username </label>
+          <br className="mb-8"/>
+          <input id="username" className="my-4 p-2 w-[100%] border border-red rounded-md bg-white" type="text" placeholder="Enter username" name="username" required></input>
+        </div>
+
+        <div>
+          <label className="text-2xl font-header font-semibold" for="password"> Password </label>
+          <br className="mb-8"/>
+          <input id="password" className="my-4 p-2 w-[100%] border border-red rounded-md bg-white" type="password" placeholder="Enter password" name="password" required></input>
+        </div>
+
+        <button onClick={handleAuth} className="mt-8 text-black border border-red hover:bg-red hover:text-white rounded-md p-3 ease-in-out duration-300">Submit</button>
       </div>
     );
 
+  }
+
+  const handleAuth = (event) => {
+    event.preventDefault();
+    const username = document.getElementById('username').value;
+    const password = document.getElementById('password').value;
   }
 
   return (
@@ -23,10 +40,7 @@ function Login() {
         </p>
 
         <div className="py-10 mx-auto">
-          <FormControl form="username"/>
-          <FormControl form="password"/>
-
-          <button className="mt-8 text-black border border-red hover:bg-red hover:text-white rounded-md p-3 ease-in-out duration-300">Submit</button>
+          <FormControl/>
         </div>
       </div>
     </div>
