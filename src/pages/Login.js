@@ -27,6 +27,21 @@ function Login() {
     event.preventDefault();
     const username = document.getElementById('username').value;
     const password = document.getElementById('password').value;
+
+    fetch("http://localhost:3000//users", {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify({
+        username: username,
+        password: password,
+      }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data)
+      })
   }
 
   return (
