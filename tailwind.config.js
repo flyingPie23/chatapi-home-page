@@ -2,17 +2,22 @@
 module.exports = {
   content: ["./src/**/*.{html,js}"],
   theme: {
-    extend: {},
+
     fontFamily: {
       header: ['Oswald', 'sans-serif'],
     },
+
     colors: {
       'red': "#800000",
-      'light-gray': "#DDDDDD",
+      'gray': "#B6B09F",
       'light-cream': "#FAF7F3",
       'white': "#FFFFFF",
       'black': "#000000",
-    }
+    },
+
+    container: {
+      center: true,
+    },
   },
   plugins: [],
 }
