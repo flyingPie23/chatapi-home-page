@@ -28,7 +28,7 @@ function Login() {
     const username = document.getElementById('username').value;
     const password = document.getElementById('password').value;
 
-    fetch("http://localhost:3000//users", {
+    fetch("http://localhost:3000/users", {
       method: "POST",
       headers: {
         "Content-type": "application/json",
@@ -40,7 +40,46 @@ function Login() {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data)
+        if (data.errors && data.errors[0] === "Username has already been taken") {
+          console.log(data)
+
+          fetch("http://localhost:3000/auth/login/", {
+            method: "POST",
+            headers: {
+              "Content-type": "application/json",
+            },
+            body: JSON.stringify({
+              username: username,
+              password: password,
+            }),
+          })
+            .then((res) => res.json())
+            .then((data) => {
+              if (data.message) {
+                alert(data.message)
+              } else {
+                alert("sign-in succesfully")
+                localStorage.setItem("jwt", data.token);
+
+                window.location.href = "/"
+
+              }
+            })
+        }
+        else {
+          if (data.errors) {
+            alert(data.errors[0])
+          } else {
+            console.log(data)
+            alert("sign-in succesfully")
+            localStorage.setItem("jwt", data.token);
+
+            window.location.href = "/"
+          }
+        }
+
+
+
       })
   }
 
@@ -54,7 +93,7 @@ function Login() {
           Start by creating a profile here, then you will be given a Token. If you already have one, use those credentials.
         </p>
 
-        <div className="py-10 mx-auto">
+        <div className="py-3 mx-auto">
           <FormControl/>
         </div>
       </div>
