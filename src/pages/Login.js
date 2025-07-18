@@ -61,6 +61,8 @@ function Login() {
                 alert("sign-in succesfully")
                 localStorage.setItem("jwt", data.token);
 
+                localStorage.setItem("user", data.user.username);
+
                 window.location.href = "/"
 
               }
@@ -73,6 +75,7 @@ function Login() {
             console.log(data)
             alert("sign-in succesfully")
             localStorage.setItem("jwt", data.token);
+            localStorage.setItem("user", data.user.username);
 
             window.location.href = "/"
           }
