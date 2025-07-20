@@ -1,5 +1,15 @@
 
 function Profile() {
+  async function copyToClipboard(text) {
+    try {
+      await navigator.clipboard.writeText(text);
+      console.log('Text copied to clipboard successfully!');
+      alert("copied to clipboard")
+    } catch (err) {
+      console.error('Failed to copy text: ', err);
+    }
+  }
+
   return (
     <div>
       <div className="my-2 p-8 mx-auto max-w-4xl ">
@@ -32,7 +42,7 @@ function Profile() {
 
           <h1 className="text-[18px] font-semibold font-header">{localStorage.jwt}</h1>
 
-          <button>
+          <button onClick={() => copyToClipboard(localStorage.jwt)}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
